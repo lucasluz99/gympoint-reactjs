@@ -35,6 +35,9 @@ export const Content = styled.div`
       input {
         height: 40px;
         width: 100%;
+        font-size: 15px;
+        color: #222;
+        padding: 5px;
       }
     }
 
