@@ -8,6 +8,8 @@ import { signInRequest } from '../../store/modules/auth/actions';
 import logo from '../../assets/images/logo.png';
 
 function Signin() {
+  const dispatch = useDispatch();
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um email válido')
@@ -20,8 +22,8 @@ function Signin() {
       email: '',
       password: '',
     },
-    onSubmit(values) {
-      signInRequest(values.email, values.password);
+    onSubmit({ email, password }) {
+      dispatch(signInRequest(email, password));
     },
     validationSchema: schema,
   });
