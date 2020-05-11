@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+
+import { signInRequest } from '../../store/modules/auth/actions';
+
 import logo from '../../assets/images/logo.png';
 
 function Signin() {
@@ -17,7 +21,7 @@ function Signin() {
       password: '',
     },
     onSubmit(values) {
-      console.log(values);
+      signInRequest(values.email, values.password);
     },
     validationSchema: schema,
   });
