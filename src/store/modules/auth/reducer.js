@@ -4,6 +4,10 @@ const INITIAL_STATE = {
   token: null,
   signed: false,
   loading: false,
+  admin: {
+    name: '',
+    email: '',
+  },
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -13,6 +17,8 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.token = action.payload.token;
         draft.signed = true;
         draft.loading = false;
+        draft.admin.name = action.payload.user.name;
+        draft.admin.email = action.payload.user.email;
       });
     default:
       return state;
