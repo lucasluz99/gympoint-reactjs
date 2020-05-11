@@ -39,6 +39,12 @@ export const Content = styled.div`
         color: #222;
         padding: 5px;
       }
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+      }
     }
 
     button {
