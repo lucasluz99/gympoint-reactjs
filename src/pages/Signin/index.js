@@ -1,9 +1,25 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import logo from '../../assets/images/logo.png';
 
 function Signin() {
-  return <h1>Signin</h1>;
+  return (
+    <>
+      <img src={logo} alt="Gympoint" />
+
+      <form>
+        <div>
+          <h1>Seu e-mail</h1>
+          <input type="email" />
+        </div>
+        <div>
+          <h1>Sua senha</h1>
+          <input type="password" />
+        </div>
+        <button type="submit">Entrar no sistema</button>
+      </form>
+    </>
+  );
 }
 
 export default Signin;
