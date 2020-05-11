@@ -1,5 +1,8 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+
+import { Switch } from 'react-router-dom';
+
+import Route from './Route';
 
 import Signin from '../pages/Signin';
 
@@ -22,19 +25,23 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={Signin} />
 
-      <Route path="/dashboard" component={Students} />
-      <Route path="/students/new" component={StudentsNew} />
-      <Route path="/students/edit" component={StudentsEdit} />
+      <Route path="/dashboard" component={Students} isPrivate />
+      <Route path="/students/new" component={StudentsNew} isPrivate />
+      <Route path="/students/edit" component={StudentsEdit} isPrivate />
 
-      <Route path="/plans" component={Plans} />
-      <Route path="/plans/new" component={PlansNew} />
-      <Route path="/plans/edit" component={PlansEdit} />
+      <Route path="/plans" component={Plans} isPrivate />
+      <Route path="/plans/new" component={PlansNew} isPrivate />
+      <Route path="/plans/edit" component={PlansEdit} isPrivate />
 
-      <Route path="/registrations" component={Registrations} />
-      <Route path="/registrations/new" component={RegistrationsNew} />
-      <Route path="/registrations/edit" component={RegistrationsEdit} />
+      <Route path="/registrations" component={Registrations} isPrivate />
+      <Route path="/registrations/new" component={RegistrationsNew} isPrivate />
+      <Route
+        path="/registrations/edit"
+        component={RegistrationsEdit}
+        isPrivate
+      />
 
-      <Route path="/help-orders" component={HelpOrders} />
+      <Route path="/help-orders" component={HelpOrders} isPrivate />
     </Switch>
   );
 }
