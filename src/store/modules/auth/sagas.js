@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import history from '../../../services/history';
 
-import { signInSuccess } from './actions';
+import { signInSuccess, signInFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
@@ -18,6 +18,7 @@ export function* signIn({ payload }) {
 
     history.push('/dashboard');
   } catch (err) {
+    yield put(signInFailure());
     toast.error('Email ou senha incorretos');
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
@@ -9,7 +9,7 @@ import logo from '../../assets/images/logo.png';
 
 function Signin() {
   const dispatch = useDispatch();
-
+  const loading = useSelector((state) => state.auth.loading);
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um email válido')
@@ -56,7 +56,11 @@ function Signin() {
             <span>{formik.errors.password}</span>
           )}
         </div>
-        <button type="submit">Entrar no sistema</button>
+        {loading ? (
+          <button type="submit">Carregando...</button>
+        ) : (
+          <button type="submit">Entrar no sistema</button>
+        )}
       </form>
     </>
   );
