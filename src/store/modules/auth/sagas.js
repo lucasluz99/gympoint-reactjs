@@ -16,7 +16,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    history.push('/dashboard');
+    history.push('/students');
   } catch (err) {
     yield put(signInFailure());
     toast.error('Email ou senha incorretos');

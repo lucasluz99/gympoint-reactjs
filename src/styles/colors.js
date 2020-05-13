@@ -9,4 +9,8 @@ export default {
   input: '#333',
   border: '#ddd',
   borderSecond: '#eee',
+
+  menuItem: '#666',
+
+  delete: '#DE3B3B',
 };

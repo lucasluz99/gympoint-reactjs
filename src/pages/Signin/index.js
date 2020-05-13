@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import colors from '../../styles/colors';
+
 import Input from '../../components/Input';
 import Label from '../../components/Label';
 import Button from '../../components/Button';
