@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-
+import colors from '../../styles/colors';
 import Input from '../../components/Input';
 import Label from '../../components/Label';
+import Button from '../../components/Button';
 import { signInRequest } from '../../store/modules/auth/actions';
 
 import logo from '../../assets/images/logo.png';
@@ -35,7 +36,7 @@ function Signin() {
 
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <Label for="email">Seu e-mail</Label>
+          <Label htmlFor="email">Seu e-mail</Label>
           <Input
             type="email"
             name="email"
@@ -48,7 +49,7 @@ function Signin() {
           )}
         </div>
         <div>
-          <Label for="password">Sua senha</Label>
+          <Label htmlFor="password">Sua senha</Label>
           <Input
             type="password"
             name="password"
@@ -61,9 +62,11 @@ function Signin() {
           )}
         </div>
         {loading ? (
-          <button type="submit">Carregando...</button>
+          <Button type="submit" disabled>
+            Carregando...
+          </Button>
         ) : (
-          <button type="submit">Entrar no sistema</button>
+          <Button type="submit">Entrar no sistema</Button>
         )}
       </form>
     </>

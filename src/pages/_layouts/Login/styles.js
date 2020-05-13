@@ -37,20 +37,5 @@ export const Content = styled.div`
         font-size: 14px;
       }
     }
-
-    button {
-      border: 0;
-      color: ${colors.light};
-      background-color: ${colors.primary};
-      height: 40px;
-      width: 100%;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: background 200ms linear;
-
-      &:hover {
-        background-color: ${darken(0.1, colors.primary)};
-      }
-    }
   }
 `;
