@@ -4,7 +4,7 @@ import { darken } from 'polished';
 import colors from '../../styles/colors';
 
 export const Container = styled.header`
-  padding: 20px;
+  padding: 15px;
   display: flex;
   background-color: ${colors.light};
   justify-content: space-between;
@@ -31,7 +31,7 @@ export const Menu = styled.nav`
 
 export const MenuItem = styled(Link)`
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   color: ${(props) =>
     props.active ? `${colors.primary}` : `${colors.menuItem}`};
