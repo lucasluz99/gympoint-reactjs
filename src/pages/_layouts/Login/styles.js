@@ -17,32 +17,20 @@ export const Content = styled.div`
   background-color: ${colors.light};
   border-radius: 4px;
   padding: 20px;
-
+  padding-bottom: 35px;
   img {
-    width: 180px;
-    margin-bottom: 30px;
+    width: 160px;
+    margin-bottom: 40px;
     align-self: center;
   }
 
   form {
     div {
-      margin-bottom: 20px;
-      h1 {
-        color: ${colors.darkSecond};
-        font-size: 15px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
+      margin-bottom: 25px;
+      label {
+        display: block;
+        margin-bottom: 7px;
       }
-      input {
-        height: 40px;
-        width: 100%;
-        font-size: 15px;
-        color: ${colors.input};
-        border: 1px solid ${colors.border};
-        border-radius: 4px;
-        padding: 10px;
-      }
-
       span {
         display: block;
         margin-top: 5px;

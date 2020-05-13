@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
+import Input from '../../components/Input';
+import Label from '../../components/Label';
 import { signInRequest } from '../../store/modules/auth/actions';
 
 import logo from '../../assets/images/logo.png';
@@ -33,11 +35,12 @@ function Signin() {
 
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <h1>Seu e-mail</h1>
-          <input
+          <Label for="email">Seu e-mail</Label>
+          <Input
             type="email"
             name="email"
             id="email"
+            placeholder="exemplo@seuemail.com"
             onChange={formik.handleChange}
           />
           {formik.errors.email && formik.touched.email && (
@@ -45,11 +48,12 @@ function Signin() {
           )}
         </div>
         <div>
-          <h1>Sua senha</h1>
-          <input
+          <Label for="password">Sua senha</Label>
+          <Input
             type="password"
             name="password"
             id="password"
+            placeholder="*******"
             onChange={formik.handleChange}
           />
           {formik.errors.password && formik.touched.password && (
