@@ -1,9 +1,10 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background-color: #e44a68;
+  background-color: ${colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 360px;
-  background-color: #fff;
+  background-color: ${colors.light};
   border-radius: 4px;
   padding: 20px;
 
@@ -27,7 +28,7 @@ export const Content = styled.div`
     div {
       margin-bottom: 20px;
       h1 {
-        color: #222;
+        color: ${colors.darkSecond};
         font-size: 15px;
         text-transform: uppercase;
         margin-bottom: 5px;
@@ -36,8 +37,10 @@ export const Content = styled.div`
         height: 40px;
         width: 100%;
         font-size: 15px;
-        color: #222;
-        padding: 5px;
+        color: ${colors.input};
+        border: 1px solid ${colors.border};
+        border-radius: 4px;
+        padding: 10px;
       }
 
       span {
@@ -49,8 +52,8 @@ export const Content = styled.div`
 
     button {
       border: 0;
-      color: #fff;
-      background-color: #e44a68;
+      color: ${colors.light};
+      background-color: ${colors.primary};
       height: 40px;
       width: 100%;
       border-radius: 4px;
@@ -58,7 +61,7 @@ export const Content = styled.div`
       transition: background 200ms linear;
 
       &:hover {
-        background-color: ${darken(0.1, '#e44a68')};
+        background-color: ${darken(0.1, colors.primary)};
       }
     }
   }
