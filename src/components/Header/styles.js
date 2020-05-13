@@ -54,11 +54,12 @@ export const Logout = styled.div`
     margin-bottom: 4px;
   }
 
-  span {
+  button {
     font-size: 14px;
     display: block;
     color: ${colors.delete};
-    cursor: pointer;
+    background: none;
+    border: none;
     &:hover {
       color: ${darken(0.1, colors.delete)};
     }

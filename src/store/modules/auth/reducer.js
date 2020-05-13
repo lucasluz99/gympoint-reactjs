@@ -32,7 +32,13 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
       case '@auth/SIGN_OUT': {
-        draft = INITIAL_STATE;
+        draft.token = null;
+        draft.signed = null;
+        draft.loading = false;
+        draft.admin = {
+          name: '',
+          email: '',
+        };
         break;
       }
       default:

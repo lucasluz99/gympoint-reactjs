@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import logo from '../../assets/images/logo-header.png';
+import { signOut } from '../../store/modules/auth/actions';
 import { Container, Logo, Menu, MenuItem, Logout } from './styles';
 
 function Header() {
+  const dispatch = useDispatch();
+
   const [items, setItems] = useState([
     { text: 'Alunos', to: '/students' },
     { text: 'Planos', to: '/plans' },
@@ -34,7 +37,9 @@ function Header() {
 
       <Logout>
         <p>{name}</p>
-        <span>Sair da aplicação</span>
+        <button type="button" onClick={() => dispatch(signOut())}>
+          Sair da aplicação
+        </button>
       </Logout>
     </Container>
   );
