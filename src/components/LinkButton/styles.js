@@ -14,5 +14,6 @@ export const StyledLinkButton = styled(Link)`
   font-size: 14px;
   text-transform: uppercase;
   text-decoration: none;
+  font-weight: bold;
   border-radius: 4px;
 `;

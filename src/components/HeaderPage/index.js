@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
+import Title from '../Title';
+
 function HeaderPage({ title, children }) {
   return (
     <Container>
-      <h1>{title}</h1>
+      <Title>{title}</Title>
       <div>{children}</div>
     </Container>
   );

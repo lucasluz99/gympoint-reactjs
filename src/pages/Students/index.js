@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+
 import { FaPlus } from 'react-icons/fa';
+
 import LinkButton from '../../components/LinkButton';
 import HeaderPage from '../../components/HeaderPage';
+import InputIcon from '../../components/InputIcon';
 
 function Students() {
   return (
@@ -11,7 +13,6 @@ function Students() {
         <FaPlus color="#fff" size={18} />
         Cadastrar
       </LinkButton>
-      <input type="text" />
     </HeaderPage>
   );
 }
