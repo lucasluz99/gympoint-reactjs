@@ -10,7 +10,7 @@ function InputIcon({ handleChange }) {
 
   return (
     <Container>
-      <MdSearch size={25} color={colors.input} />
+      <MdSearch size={25} color={colors.border} />
       <Input onChange={handleChangeDebounce} placeholder="Pesquise pelo nome" />
     </Container>
   );

@@ -13,6 +13,7 @@ function Students() {
         <FaPlus color="#fff" size={18} />
         Cadastrar
       </LinkButton>
+      <InputIcon handleChange={() => {}} />
     </HeaderPage>
   );
 }
