@@ -43,7 +43,7 @@ export function deleteStudentRequest(id) {
 
 export function deleteStudentSuccess(data) {
   return {
-    type: '@student/DELETE_REQUEST',
+    type: '@student/DELETE_SUCCESS',
     payload: {
       ...data,
     },

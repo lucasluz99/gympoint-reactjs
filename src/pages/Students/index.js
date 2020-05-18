@@ -68,12 +68,19 @@ function Students() {
                 <Td>{student.email}</Td>
                 <Td align="center">{student.age}</Td>
                 <Td align="center">
-                  <button
+                    {student.delete ? 
+                     <button
                     type="button"
                     onClick={() => handleDelete(student.id)}
                   >
                     Apagar
-                  </button>{' '}
+                  </button> :  <button disabled
+                     type="button"
+                    onClick={() => handleDelete(student.id)}
+                  >
+                    Apagar
+                  </button>
+                    }
                   / Editar
                 </Td>
               </tr>
