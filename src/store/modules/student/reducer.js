@@ -34,6 +34,13 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.totalPages = totalPages;
         break;
       }
+      case '@student/DELETE_SUCCESS': {
+        const { data, currentPage, totalPages } = action.payload;
+        draft.students = data;
+        draft.currentPage = currentPage;
+        draft.totalPages = totalPages;
+        break;
+      }
       default:
     }
   });

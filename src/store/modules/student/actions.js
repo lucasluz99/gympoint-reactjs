@@ -31,3 +31,21 @@ export function loadStudentsSuccess(data) {
     },
   };
 }
+
+export function deleteStudentRequest(id) {
+  return {
+    type: '@student/DELETE_REQUEST',
+    payload: {
+      id,
+    },
+  };
+}
+
+export function deleteStudentSuccess(data) {
+  return {
+    type: '@student/DELETE_REQUEST',
+    payload: {
+      ...data,
+    },
+  };
+}

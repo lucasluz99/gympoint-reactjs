@@ -6,7 +6,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   searchStudentRequest,
   loadStudentsRequest,
+  deleteStudentRequest,
 } from '../../store/modules/student/actions';
+
+import Alert from '../../services/alert';
 
 import LinkButton from '../../components/LinkButton';
 import HeaderPage from '../../components/HeaderPage';
@@ -26,6 +29,13 @@ function Students() {
   function handleChange(name) {
     setInputValue(name);
     dispatch(searchStudentRequest(name));
+  }
+
+  async function handleDelete(id) {
+    const { value } = await Alert.delete();
+    if (value) {
+      return dispatch(deleteStudentRequest(id));
+    }
   }
 
   useEffect(() => {
@@ -52,12 +62,20 @@ function Students() {
             </tr>
           </Thead>
           <Tbody>
-            {students.map((student, i) => (
+            {students.map((student) => (
               <tr>
                 <Td width={40}>{student.name}</Td>
                 <Td>{student.email}</Td>
                 <Td align="center">{student.age}</Td>
-                <Td align="center">Apagar / Deletar</Td>
+                <Td align="center">
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(student.id)}
+                  >
+                    Apagar
+                  </button>{' '}
+                  / Editar
+                </Td>
               </tr>
             ))}
           </Tbody>
