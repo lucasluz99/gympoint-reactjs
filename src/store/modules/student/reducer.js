@@ -27,7 +27,11 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         break;
       }
       case '@student/LOAD_SUCCESS': {
+        const { data, currentPage, totalPages } = action.payload;
         draft.loading = false;
+        draft.students = data;
+        draft.currentPage = currentPage;
+        draft.totalPages = totalPages;
         break;
       }
       default:

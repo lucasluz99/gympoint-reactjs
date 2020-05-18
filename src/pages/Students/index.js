@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { searchStudentRequest } from '../../store/modules/student/actions';
+import {
+  searchStudentRequest,
+  loadStudentsRequest,
+} from '../../store/modules/student/actions';
 
 import LinkButton from '../../components/LinkButton';
 import HeaderPage from '../../components/HeaderPage';
@@ -17,13 +20,18 @@ import Td from '../../components/Table/Td';
 
 function Students() {
   const [inputValue, setInputValue] = useState('');
-
+  const students = useSelector((state) => state.student.students);
   const dispatch = useDispatch();
 
   function handleChange(name) {
     setInputValue(name);
     dispatch(searchStudentRequest(name));
   }
+
+  useEffect(() => {
+    dispatch(loadStudentsRequest());
+  }, []);
+
   return (
     <>
       <HeaderPage title="Gerenciando Alunos">
@@ -44,66 +52,14 @@ function Students() {
             </tr>
           </Thead>
           <Tbody>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
-            <tr>
-              <Td>Lucas Luz</Td>
-              <Td>lucasluz@email.com</Td>
-              <Td align="center">20</Td>
-              <Td align="center">Apagar / Deletar</Td>
-            </tr>
+            {students.map((student) => (
+              <tr>
+                <Td>{student.name}</Td>
+                <Td>{student.email}</Td>
+                <Td align="center">{student.age}</Td>
+                <Td align="center">Apagar / Deletar</Td>
+              </tr>
+            ))}
           </Tbody>
         </Table>
       </Panel>

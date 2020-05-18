@@ -5,4 +5,6 @@ export const Container = styled.div`
   background-color: ${colors.light};
   padding: 30px;
   border-radius: 4px;
+  min-height: 580px;
+  max-height: 580px;
 `;
