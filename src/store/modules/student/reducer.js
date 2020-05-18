@@ -2,8 +2,9 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   students: [],
+  currentPage: 1,
+  totalPages: 1,
   loading: false,
-  student: '',
 };
 
 export default function studentReducer(state = INITIAL_STATE, action) {
@@ -11,12 +12,15 @@ export default function studentReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
       case '@student/SEARCH_REQUEST': {
         draft.loading = true;
-        draft.student = action.payload.student;
+
         break;
       }
       case '@student/SEARCH_SUCCESS': {
+        const { data, currentPage, totalPages } = action.payload;
         draft.loading = false;
-        draft.students = action.payload.students;
+        draft.students = data;
+        draft.currentPage = currentPage;
+        draft.totalPages = totalPages;
         break;
       }
       default:
