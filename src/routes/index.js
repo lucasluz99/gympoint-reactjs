@@ -27,16 +27,16 @@ export default function Routes() {
 
       <Route path="/students" exact component={Students} isPrivate />
       <Route path="/students/new" component={StudentsNew} isPrivate />
-      <Route path="/students/edit" component={StudentsEdit} isPrivate />
+      <Route path="/students/edit/:id" component={StudentsEdit} isPrivate />
 
       <Route path="/plans" component={Plans} isPrivate />
       <Route path="/plans/new" component={PlansNew} isPrivate />
-      <Route path="/plans/edit" component={PlansEdit} isPrivate />
+      <Route path="/plans/edit/:id" component={PlansEdit} isPrivate />
 
       <Route path="/registrations" component={Registrations} isPrivate />
       <Route path="/registrations/new" component={RegistrationsNew} isPrivate />
       <Route
-        path="/registrations/edit"
+        path="/registrations/edit/:id"
         component={RegistrationsEdit}
         isPrivate
       />

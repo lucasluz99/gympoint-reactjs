@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-
+import { useParams } from 'react-router-dom';
 import { MdKeyboardArrowLeft as Arrow, MdDone } from 'react-icons/md';
+
+import api from '../../services/api';
+
 import { Form } from './styles';
 
 import Input from '../../components/Input';
@@ -16,6 +19,8 @@ import { editStudentRequest } from '../../store/modules/student/actions';
 
 function StudentsEdit() {
   const dispatch = useDispatch();
+  const [initial, setInitial] = useState({});
+  const { id } = useParams();
 
   const schema = Yup.object().shape({
     name: Yup.string().required('Nome é obrigatório'),
@@ -31,17 +36,34 @@ function StudentsEdit() {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      name: '',
-      age: '',
-      weight: '',
-      height: '',
+      name: initial.name,
+      email: initial.email,
+      age: initial.age,
+      weight: initial.weight,
+      height: initial.height,
     },
+    enableReinitialize: true,
     onSubmit(data) {
       console.log(data);
     },
     validationSchema: schema,
   });
+
+  useEffect(() => {
+    async function loadStudent() {
+      const { data } = await api.get(`/students?id=${id}`);
+      setInitial({
+        name: data.name,
+        email: data.email,
+        age: data.age,
+        weight: data.weight,
+        height: data.height,
+      });
+    }
+
+    loadStudent();
+  }, []);
+
   return (
     <>
       <HeaderPage title="Edição de aluno">
@@ -62,6 +84,7 @@ function StudentsEdit() {
               type="text"
               name="name"
               id="name"
+              value={formik.values.name}
               onChange={formik.handleChange}
             />
             {formik.errors.name && formik.touched.name && (
@@ -74,6 +97,7 @@ function StudentsEdit() {
               type="email"
               name="email"
               id="email"
+              value={formik.values.email}
               onChange={formik.handleChange}
             />
             {formik.errors.email && formik.touched.email && (
@@ -87,6 +111,7 @@ function StudentsEdit() {
                 type="number"
                 name="age"
                 id="age"
+                value={formik.values.age}
                 onChange={formik.handleChange}
               />
               {formik.errors.age && formik.touched.age && (
@@ -100,6 +125,7 @@ function StudentsEdit() {
                 type="number"
                 name="weight"
                 id="weight"
+                value={formik.values.weight}
                 onChange={formik.handleChange}
               />
               {formik.errors.weight && formik.touched.weight && (
@@ -113,6 +139,7 @@ function StudentsEdit() {
                 type="number"
                 name="height"
                 id="height"
+                value={formik.values.height}
                 onChange={formik.handleChange}
               />
               {formik.errors.height && formik.touched.height && (

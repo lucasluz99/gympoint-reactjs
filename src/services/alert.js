@@ -6,12 +6,12 @@ const MySwal = withReactContent(Swal);
 const Alert = {
   async delete() {
     return MySwal.fire({
-      title: 'Você Confirma a EXCLUSÃO?',
+      title: 'Você confirma a remoção?',
       text: 'O registro será removido permanentemente!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'SIM, confirmo a exclusão',
-      cancelButtonText: 'NÃO',
+      confirmButtonText: 'Sim, confirmo a exclusão',
+      cancelButtonText: 'Não',
       confirmButtonColor: '#28a745',
       cancelButtonColor: '#dc3545',
       focusCancel: true,

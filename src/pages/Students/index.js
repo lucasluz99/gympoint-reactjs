@@ -84,7 +84,10 @@ function Students() {
                     Apagar
                   </DeleteButton>
 
-                  <Link style={{ color: '#4D85EE' }} to="/students/edit">
+                  <Link
+                    style={{ color: '#4D85EE' }}
+                    to={`/students/edit/${student.id}`}
+                  >
                     Editar
                   </Link>
                 </Td>
