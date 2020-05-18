@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 
 import { FaPlus } from 'react-icons/fa';
@@ -35,6 +36,7 @@ function Students() {
 
   async function handleDelete(student) {
     const { id } = student;
+
     if (!student.delete) {
       await Alert.alert();
       return;
@@ -70,26 +72,18 @@ function Students() {
           </Thead>
           <Tbody>
             {students.map((student) => (
-              <tr>
+              <tr key={student.id}>
                 <Td width={40}>{student.name}</Td>
                 <Td>{student.email}</Td>
                 <Td align="center">{student.age}</Td>
                 <Td align="center">
-                  {student.delete ? (
-                    <DeleteButton
-                      type="button"
-                      onClick={() => handleDelete(student.id)}
-                    >
-                      Apagar
-                    </DeleteButton>
-                  ) : (
-                    <DeleteButton
-                      type="button"
-                      onClick={() => handleDelete(student)}
-                    >
-                      Apagar
-                    </DeleteButton>
-                  )}
+                  <DeleteButton
+                    type="button"
+                    onClick={() => handleDelete(student)}
+                  >
+                    Apagar
+                  </DeleteButton>
+
                   <Link style={{ color: '#4D85EE' }} to="/students/edit">
                     Editar
                   </Link>

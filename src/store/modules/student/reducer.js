@@ -41,6 +41,18 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.totalPages = totalPages;
         break;
       }
+      case '@student/EDIT_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@student/EDIT_SUCCESS': {
+        const { data, currentPage, totalPages } = action.payload;
+        draft.students = data;
+        draft.currentPage = currentPage;
+        draft.totalPages = totalPages;
+        draft.loading = false;
+        break;
+      }
       default:
     }
   });
