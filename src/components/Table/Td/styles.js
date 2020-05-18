@@ -6,4 +6,5 @@ export const StyledTd = styled.td`
   padding: 15px 0;
   color: ${colors.menuItem};
   border-bottom: 1px solid ${colors.border};
+  ${(props) => props.width && `width:${props.width}%;`}
 `;

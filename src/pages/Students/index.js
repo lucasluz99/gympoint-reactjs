@@ -52,9 +52,9 @@ function Students() {
             </tr>
           </Thead>
           <Tbody>
-            {students.map((student) => (
+            {students.map((student, i) => (
               <tr>
-                <Td>{student.name}</Td>
+                <Td width={40}>{student.name}</Td>
                 <Td>{student.email}</Td>
                 <Td align="center">{student.age}</Td>
                 <Td align="center">Apagar / Deletar</Td>
