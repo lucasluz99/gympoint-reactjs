@@ -4,6 +4,8 @@ import colors from '../../../styles/colors';
 export const Wrapper = styled.div`
   height: 100%;
   background-color: ${colors.second};
+  position: absolute;
+  width: 100%;
 `;
 
 export const Container = styled.div`

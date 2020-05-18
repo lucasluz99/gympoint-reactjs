@@ -7,7 +7,7 @@ const Alert = {
   async delete() {
     return MySwal.fire({
       title: 'Você Confirma a EXCLUSÃO?',
-      text: 'O registro será removido completamente!',
+      text: 'O registro será removido permanentemente!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'SIM, confirmo a exclusão',
@@ -16,6 +16,18 @@ const Alert = {
       cancelButtonColor: '#dc3545',
       focusCancel: true,
       reverseButtons: true,
+    });
+  },
+  async alert() {
+    return MySwal.fire({
+      title: 'Este usuário não pode ser removido',
+      text:
+        'Ele ainda possui uma matŕicula ativa,primeiro delete sua matrícula',
+      icon: 'warning',
+
+      confirmButtonText: 'Ok',
+
+      confirmButtonColor: '#28a745',
     });
   },
 };

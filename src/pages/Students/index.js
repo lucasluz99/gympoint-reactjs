@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import {
   searchStudentRequest,
   loadStudentsRequest,
@@ -15,6 +16,7 @@ import LinkButton from '../../components/LinkButton';
 import HeaderPage from '../../components/HeaderPage';
 import InputIcon from '../../components/InputIcon';
 import Panel from '../../components/Panel';
+import DeleteButton from '../../components/DeleteButton';
 import Table from '../../components/Table/Table';
 import Thead from '../../components/Table/Thead';
 import Th from '../../components/Table/Th';
@@ -31,7 +33,12 @@ function Students() {
     dispatch(searchStudentRequest(name));
   }
 
-  async function handleDelete(id) {
+  async function handleDelete(student) {
+    const { id } = student;
+    if (!student.delete) {
+      await Alert.alert();
+      return;
+    }
     const { value } = await Alert.delete();
     if (value) {
       return dispatch(deleteStudentRequest(id));
@@ -68,20 +75,24 @@ function Students() {
                 <Td>{student.email}</Td>
                 <Td align="center">{student.age}</Td>
                 <Td align="center">
-                    {student.delete ? 
-                     <button
-                    type="button"
-                    onClick={() => handleDelete(student.id)}
-                  >
-                    Apagar
-                  </button> :  <button disabled
-                     type="button"
-                    onClick={() => handleDelete(student.id)}
-                  >
-                    Apagar
-                  </button>
-                    }
-                  / Editar
+                  {student.delete ? (
+                    <DeleteButton
+                      type="button"
+                      onClick={() => handleDelete(student.id)}
+                    >
+                      Apagar
+                    </DeleteButton>
+                  ) : (
+                    <DeleteButton
+                      type="button"
+                      onClick={() => handleDelete(student)}
+                    >
+                      Apagar
+                    </DeleteButton>
+                  )}
+                  <Link style={{ color: '#4D85EE' }} to="/students/edit">
+                    Editar
+                  </Link>
                 </Td>
               </tr>
             ))}

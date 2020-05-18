@@ -22,7 +22,7 @@ function* loadStudents() {
 
 function* deleteStudent({ payload }) {
   const { id } = payload;
-  
+
   yield call(api.delete, `/students/${id}`);
 
   const { data } = yield call(api.get, '/students');
