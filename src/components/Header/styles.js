@@ -31,7 +31,7 @@ export const Menu = styled.nav`
 
 export const MenuItem = styled(Link)`
   text-transform: uppercase;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   color: ${(props) =>
     props.active ? `${colors.primary}` : `${colors.menuItem}`};
@@ -49,13 +49,13 @@ export const Logout = styled.div`
 
   p {
     color: ${colors.menuItem};
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 4px;
   }
 
   button {
-    font-size: 14px;
+    font-size: 12px;
     display: block;
     color: ${colors.delete};
     background: none;

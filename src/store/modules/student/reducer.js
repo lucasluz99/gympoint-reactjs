@@ -12,7 +12,6 @@ export default function studentReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
       case '@student/SEARCH_REQUEST': {
         draft.loading = true;
-
         break;
       }
       case '@student/SEARCH_SUCCESS': {
@@ -21,6 +20,14 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.students = data;
         draft.currentPage = currentPage;
         draft.totalPages = totalPages;
+        break;
+      }
+      case '@student/LOAD_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@student/LOAD_SUCCESS': {
+        draft.loading = false;
         break;
       }
       default:

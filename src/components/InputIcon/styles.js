@@ -13,11 +13,11 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  height: 40px;
+  height: 35px;
   padding: 5px 0;
   padding-left: 30px;
   color: ${colors.input};
   border: 1px solid ${colors.border};
   width: 100%;
-  font-size: 15px;
+  font-size: 14px;
 `;

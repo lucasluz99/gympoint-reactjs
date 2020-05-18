@@ -16,3 +16,18 @@ export function searchStudentSuccess(data) {
     },
   };
 }
+
+export function loadStudentsRequest() {
+  return {
+    type: '@student/LOAD_REQUEST',
+  };
+}
+
+export function loadStudentsSuccess(data) {
+  return {
+    type: '@student/LOAD_SUCCESS',
+    payload: {
+      ...data,
+    },
+  };
+}
