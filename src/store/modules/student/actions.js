@@ -54,7 +54,7 @@ export function editStudentRequest(data) {
   return {
     type: '@student/EDIT_REQUEST',
     payload: {
-      data,
+      ...data,
     },
   };
 }
@@ -63,7 +63,7 @@ export function editStudentSuccess(data) {
   return {
     type: '@student/EDIT_SUCCESS',
     payload: {
-      data,
+      ...data,
     },
   };
 }

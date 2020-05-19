@@ -39,6 +39,7 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.students = data;
         draft.currentPage = currentPage;
         draft.totalPages = totalPages;
+
         break;
       }
       case '@student/EDIT_REQUEST': {

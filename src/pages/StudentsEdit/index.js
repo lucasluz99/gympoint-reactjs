@@ -44,7 +44,7 @@ function StudentsEdit() {
     },
     enableReinitialize: true,
     onSubmit(data) {
-      console.log(data);
+      dispatch(editStudentRequest({ ...data, id }));
     },
     validationSchema: schema,
   });
