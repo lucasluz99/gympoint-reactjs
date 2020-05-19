@@ -30,7 +30,5 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-  .Toastify__toast--error {
-    background: #222;
- }
+
   `;

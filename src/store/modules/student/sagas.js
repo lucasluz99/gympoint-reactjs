@@ -1,10 +1,12 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import {
   searchStudentSuccess,
   loadStudentsSuccess,
   deleteStudentSuccess,
   editStudentSuccess,
 } from './actions';
+
 import api from '../../../services/api';
 
 function* searchStudent({ payload }) {
@@ -22,25 +24,35 @@ function* loadStudents() {
 }
 
 function* deleteStudent({ payload }) {
-  const { id } = payload;
+  try {
+    const { id } = payload;
 
-  yield call(api.delete, `/students/${id}`);
+    yield call(api.delete, `/students/${id}`);
 
-  const { data } = yield call(api.get, '/students');
+    const { data } = yield call(api.get, '/students');
 
-  return yield put(deleteStudentSuccess(data));
+    toast.success('Usuário deletado com sucesso');
+    return yield put(deleteStudentSuccess(data));
+  } catch (err) {
+    return toast.error('Id inválido,tente novamente');
+  }
 }
 
 function* editStudent({ payload }) {
-  const student = yield call(api.put, `/students/${payload.id}`, {
-    ...payload,
-  });
+  try {
+    const student = yield call(api.put, `/students/${payload.id}`, {
+      ...payload,
+    });
 
-  const { data } = yield call(api.get, '/students');
+    const { data } = yield call(api.get, '/students');
 
-  console.tron.log(data);
-
-  return yield put(editStudentSuccess(data));
+    toast.success('Usuário editado com sucesso');
+    return yield put(editStudentSuccess(data));
+  } catch (err) {
+    toast.error(
+      'Não foi possível editar este usuário verifique os dados ou tente novamente mais tarde'
+    );
+  }
 }
 
 export default all([
