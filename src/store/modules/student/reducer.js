@@ -39,7 +39,6 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.students = data;
         draft.currentPage = currentPage;
         draft.totalPages = totalPages;
-
         break;
       }
       case '@student/EDIT_REQUEST': {
@@ -47,6 +46,18 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         break;
       }
       case '@student/EDIT_SUCCESS': {
+        const { data, currentPage, totalPages } = action.payload;
+        draft.students = data;
+        draft.currentPage = currentPage;
+        draft.totalPages = totalPages;
+        draft.loading = false;
+        break;
+      }
+      case '@student/NEW_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@student/NEW_SUCCESS': {
         const { data, currentPage, totalPages } = action.payload;
         draft.students = data;
         draft.currentPage = currentPage;

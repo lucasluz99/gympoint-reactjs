@@ -67,3 +67,21 @@ export function editStudentSuccess(data) {
     },
   };
 }
+
+export function newStudentRequest(data) {
+  return {
+    type: '@student/NEW_REQUEST',
+    payload: {
+      data,
+    },
+  };
+}
+
+export function newStudentSuccess(data) {
+  return {
+    type: '@student/NEW_SUCCESS',
+    payload: {
+      ...data,
+    },
+  };
+}
