@@ -23,15 +23,6 @@ export function loadStudentsRequest() {
   };
 }
 
-export function loadStudentsSuccess(data) {
-  return {
-    type: '@student/LOAD_SUCCESS',
-    payload: {
-      ...data,
-    },
-  };
-}
-
 export function deleteStudentRequest(id) {
   return {
     type: '@student/DELETE_REQUEST',
@@ -41,9 +32,9 @@ export function deleteStudentRequest(id) {
   };
 }
 
-export function deleteStudentSuccess(data) {
+export function updateStudentsSuccess(data) {
   return {
-    type: '@student/DELETE_SUCCESS',
+    type: '@student/UPDATE_SUCCESS',
     payload: {
       ...data,
     },
@@ -59,29 +50,11 @@ export function editStudentRequest(data) {
   };
 }
 
-export function editStudentSuccess(data) {
-  return {
-    type: '@student/EDIT_SUCCESS',
-    payload: {
-      ...data,
-    },
-  };
-}
-
 export function newStudentRequest(data) {
   return {
     type: '@student/NEW_REQUEST',
     payload: {
       data,
-    },
-  };
-}
-
-export function newStudentSuccess(data) {
-  return {
-    type: '@student/NEW_SUCCESS',
-    payload: {
-      ...data,
     },
   };
 }

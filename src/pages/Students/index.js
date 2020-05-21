@@ -23,14 +23,15 @@ import Thead from '../../components/Table/Thead';
 import Th from '../../components/Table/Th';
 import Tbody from '../../components/Table/Tbody';
 import Td from '../../components/Table/Td';
+import Pagination from '../../components/Pagination';
 
 function Students() {
-  const [inputValue, setInputValue] = useState('');
+  const student = useSelector((state) => state.student.student);
   const students = useSelector((state) => state.student.students);
+  const totalPages = useSelector((state) => state.student.totalPages);
   const dispatch = useDispatch();
 
   function handleChange(name) {
-    setInputValue(name);
     dispatch(searchStudentRequest(name));
   }
 
@@ -58,7 +59,7 @@ function Students() {
           <FaPlus color="#fff" size={18} />
           Cadastrar
         </LinkButton>
-        <InputIcon handleChange={handleChange} value={inputValue} />
+        <InputIcon handleChange={handleChange} value={student} />
       </HeaderPage>
       <Panel>
         <Table>
@@ -96,6 +97,7 @@ function Students() {
           </Tbody>
         </Table>
       </Panel>
+      {totalPages !== 0 && <Pagination module="student" />}
     </>
   );
 }
