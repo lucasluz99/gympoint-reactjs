@@ -27,6 +27,7 @@ import Pagination from '../../components/Pagination';
 
 function Plans() {
   const plans = useSelector((state) => state.plan.plans);
+  const totalPages = useSelector((state) => state.plan.totalPages);
   const dispatch = useDispatch();
 
   async function handleDelete(id) {
@@ -60,9 +61,9 @@ function Plans() {
           <Tbody>
             {plans.map((plan) => (
               <tr key={plan.id}>
-                <Td width={50}>{plan.title}</Td>
-                <Td align="center">{plan.duration}</Td>
-                <Td align="center">{plan.price}</Td>
+                <Td>{plan.title}</Td>
+                <Td align="center">{plan.duration} meses</Td>
+                <Td align="center">{plan.priceFormatted}</Td>
                 <Td align="center">
                   <DeleteButton
                     type="button"
@@ -83,7 +84,9 @@ function Plans() {
           </Tbody>
         </Table>
       </Panel>
-      <Pagination module="plan" update={updatePageRequest} />
+      {totalPages !== 0 && (
+        <Pagination module="plan" update={updatePageRequest} />
+      )}
     </>
   );
 }
