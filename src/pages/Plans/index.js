@@ -1,7 +1,18 @@
+/* eslint-disable consistent-return */
 import React, { useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaPlus } from 'react-icons/fa';
+
+import Alert from '../../services/alert';
+
+import {
+  loadPlansRequest,
+  updatePageRequest,
+  deletePlanRequest,
+} from '../../store/modules/plan/actions';
+
 import HeaderPage from '../../components/HeaderPage';
 import LinkButton from '../../components/LinkButton';
 import Panel from '../../components/Panel';
@@ -15,16 +26,29 @@ import Td from '../../components/Table/Td';
 import Pagination from '../../components/Pagination';
 
 function Plans() {
+  const plans = useSelector((state) => state.plan.plans);
+  const dispatch = useDispatch();
+
+  async function handleDelete(id) {
+    const { value } = await Alert.delete();
+    if (value) {
+      return dispatch(deletePlanRequest(id));
+    }
+  }
+
+  useEffect(() => {
+    dispatch(loadPlansRequest());
+  }, []);
   return (
     <>
-      <HeaderPage title="Gerenciando Alunos">
+      <HeaderPage title="Gerenciando Planos">
         <LinkButton to="/students/new">
           <FaPlus color="#fff" size={18} />
           Cadastrar
         </LinkButton>
       </HeaderPage>
       <Panel>
-       {/*  <Table>
+        <Table>
           <Thead>
             <tr>
               <Th>Título</Th>
@@ -34,19 +58,22 @@ function Plans() {
             </tr>
           </Thead>
           <Tbody>
-            {students.map((student) => (
-              <tr key={student.id}>
-                <Td width={40}>{student.name}</Td>
-                <Td>{student.email}</Td>
-                <Td align="center">{student.age}</Td>
+            {plans.map((plan) => (
+              <tr key={plan.id}>
+                <Td width={50}>{plan.title}</Td>
+                <Td align="center">{plan.duration}</Td>
+                <Td align="center">{plan.price}</Td>
                 <Td align="center">
-                  <DeleteButton type="button" onClick={() => {}}>
+                  <DeleteButton
+                    type="button"
+                    onClick={() => handleDelete(plan.id)}
+                  >
                     Apagar
                   </DeleteButton>
 
                   <Link
                     style={{ color: '#4D85EE' }}
-                    to={`/students/edit/${student.id}`}
+                    to={`/plans/edit/${plan.id}`}
                   >
                     Editar
                   </Link>
@@ -54,9 +81,9 @@ function Plans() {
               </tr>
             ))}
           </Tbody>
-        </Table> */}
+        </Table>
       </Panel>
-      <Pagination module="plan" />
+      <Pagination module="plan" update={updatePageRequest} />
     </>
   );
 }
