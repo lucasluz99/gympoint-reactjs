@@ -47,7 +47,7 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         draft.loading = true;
         break;
       }
-      case '@pagination/UPDATE_SUCCESS': {
+      case '@student/UPDATE_PAGE_SUCCESS': {
         draft.currentPage = Number(action.payload.page);
         break;
       }

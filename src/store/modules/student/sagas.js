@@ -1,7 +1,10 @@
 import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import { searchStudentSuccess, updateStudentsSuccess } from './actions';
-import { updatePageSuccess } from '../pagination/actions';
+import {
+  searchStudentSuccess,
+  updateStudentsSuccess,
+  updatePageSuccess,
+} from './actions';
 import api from '../../../services/api';
 
 function* searchStudent({ payload }) {
@@ -89,5 +92,5 @@ export default all([
   takeLatest('@student/DELETE_REQUEST', deleteStudent),
   takeLatest('@student/EDIT_REQUEST', editStudent),
   takeLatest('@student/NEW_REQUEST', newStudent),
-  takeLatest('@pagination/UPDATE_REQUEST', updatePage),
+  takeLatest('@student/UPDATE_PAGE_REQUEST', updatePage),
 ]);

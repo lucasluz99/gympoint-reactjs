@@ -58,3 +58,21 @@ export function newStudentRequest(data) {
     },
   };
 }
+
+export function updatePageRequest(page) {
+  return {
+    type: '@student/UPDATE_PAGE_REQUEST',
+    payload: {
+      page,
+    },
+  };
+}
+
+export function updatePageSuccess(page) {
+  return {
+    type: '@student/UPDATE_PAGE_SUCCESS',
+    payload: {
+      page,
+    },
+  };
+}

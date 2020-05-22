@@ -9,6 +9,7 @@ import {
   searchStudentRequest,
   loadStudentsRequest,
   deleteStudentRequest,
+  updatePageRequest,
 } from '../../store/modules/student/actions';
 
 import Alert from '../../services/alert';
@@ -97,7 +98,9 @@ function Students() {
           </Tbody>
         </Table>
       </Panel>
-      {totalPages !== 0 && <Pagination module="student" />}
+      {totalPages !== 0 && (
+        <Pagination module="student" update={updatePageRequest} />
+      )}
     </>
   );
 }
