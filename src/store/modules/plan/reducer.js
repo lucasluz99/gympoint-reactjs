@@ -12,6 +12,7 @@ export default function studentReducer(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case '@plan/LOAD_REQUEST': {
+        draft.loading = true;
         break;
       }
       case '@plan/UPDATE_SUCCESS': {
@@ -26,10 +27,11 @@ export default function studentReducer(state = INITIAL_STATE, action) {
         break;
       }
       case '@plan/UPDATE_PAGE_REQUEST': {
+        draft.loading = true;
         break;
       }
-
-      case '@plan/UPDATE_PAGE_SUCCESS': {
+      case '@plan/NEW_REQUEST': {
+        draft.loading = true;
         break;
       }
 

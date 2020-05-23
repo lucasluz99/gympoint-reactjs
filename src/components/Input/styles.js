@@ -6,6 +6,10 @@ export const StyledInput = styled.input`
   width: 100%;
   font-size: 15px;
   color: ${colors.input};
+  ${(props) =>
+    props.readOnly &&
+    `background-color: ${colors.border}; cursor: not-allowed;`};
+
   border: 1px solid ${colors.border};
   width: 100%;
   border-radius: 4px;

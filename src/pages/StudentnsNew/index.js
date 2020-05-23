@@ -15,7 +15,7 @@ import HeaderPage from '../../components/HeaderPage';
 
 import { newStudentRequest } from '../../store/modules/student/actions';
 
-function StudentsEdit() {
+function StudentsNew() {
   const dispatch = useDispatch();
 
   const schema = Yup.object().shape({
@@ -52,13 +52,13 @@ function StudentsEdit() {
           <Arrow size={25} color="#fff" />
           Voltar
         </LinkButton>
-        <button form="studentEdit" type="submit">
+        <button form="studentNew" type="submit">
           <MdDone size={25} color="#fff" />
           Salvar
         </button>
       </HeaderPage>
       <Panel>
-        <Form id="studentEdit" onSubmit={formik.handleSubmit}>
+        <Form id="studentNew" onSubmit={formik.handleSubmit}>
           <div>
             <Label htmlFor="name">Nome Completo</Label>
             <Input
@@ -134,4 +134,4 @@ function StudentsEdit() {
   );
 }
 
-export default StudentsEdit;
+export default StudentsNew;

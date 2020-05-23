@@ -39,3 +39,27 @@ export function deletePlanRequest(id) {
     },
   };
 }
+
+export function newPlanRequest(data) {
+  return {
+    type: '@plan/NEW_REQUEST',
+    payload: {
+      data,
+    },
+  };
+}
+
+export function showCanceledsRequest() {
+  return {
+    type: '@plan/SHOW_CANCELEDS_REQUEST',
+  };
+}
+
+export function activatePlanRequest(id) {
+  return {
+    type: '@plan/ACTIVATE_REQUEST',
+    payload: {
+      id,
+    },
+  };
+}

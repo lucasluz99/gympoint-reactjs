@@ -10,6 +10,23 @@ export const Container = styled.div`
   > div {
     display: flex;
     align-items: center;
+
+    #checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      span {
+        color: #444;
+        font-weight: bold;
+        font-size: 15px;
+        margin-left: 10px;
+      }
+
+      input {
+        transform: scale(1.5);
+      }
+
+      margin-right: 15px;
+    }
   }
 
   button {

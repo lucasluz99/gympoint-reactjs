@@ -31,8 +31,49 @@ function* deletePlan({ payload }) {
 
   return yield put(updatePlansSuccess(data));
 }
+
+function* newPlan({ payload }) {
+  try {
+    const response = yield call(api.post, '/plans', { ...payload.data });
+
+    const { data } = yield call(api.get, '/plans');
+
+    console.tron.log(data);
+
+    toast.success('Usuário criado com sucesso');
+    return yield put(updatePlansSuccess(data));
+  } catch (err) {
+    if (err.response.data.error === 'This plan already exists') {
+      return toast.error('Já existe um plano com este nome');
+    }
+  }
+}
+
+function* showCanceled() {
+  const { data } = yield call(api.get, '/plans/canceled');
+
+  return yield put(updatePlansSuccess(data));
+}
+
+function* activatePlan({ payload }) {
+  try {
+    const { id } = payload;
+
+    const response = yield call(api.put, `/plans/canceled/${id}`);
+
+    const { data } = yield call(api.get, '/plans/canceled');
+
+    toast.success('Plano ativado');
+    return yield put(updatePlansSuccess(data));
+  } catch (err) {
+    return toast.error('Ocorreu algum erro,tente novamente mais tarde');
+  }
+}
 export default all([
   takeLatest('@plan/LOAD_REQUEST', loadPlans),
   takeLatest('@plan/UPDATE_PAGE_REQUEST', updatePage),
   takeLatest('@plan/DELETE_REQUEST', deletePlan),
+  takeLatest('@plan/NEW_REQUEST', newPlan),
+  takeLatest('@plan/SHOW_CANCELEDS_REQUEST', showCanceled),
+  takeLatest('@plan/ACTIVATE_REQUEST', activatePlan),
 ]);
