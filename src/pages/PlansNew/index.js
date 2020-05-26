@@ -75,6 +75,7 @@ function PlansNew() {
                 type="number"
                 name="duration"
                 id="duration"
+                min={1}
                 value={formik.values.duration}
                 onChange={formik.handleChange}
               />
@@ -89,6 +90,7 @@ function PlansNew() {
                 type="number"
                 name="price"
                 id="price"
+                min={0}
                 value={formik.values.price}
                 onChange={formik.handleChange}
               />

@@ -47,6 +47,9 @@ function* editStudent({ payload }) {
     toast.success('Usuário editado com sucesso');
     return yield put(updateStudentsSuccess(data));
   } catch (err) {
+    if (err.response.data.error === 'This email already exists') {
+      return toast.error('Já existe um aluno com este email');
+    }
     toast.error(
       'Não foi possível editar este usuário verifique os dados ou tente novamente mais tarde'
     );

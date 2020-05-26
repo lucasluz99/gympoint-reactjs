@@ -63,3 +63,12 @@ export function activatePlanRequest(id) {
     },
   };
 }
+
+export function editPlanRequest(data) {
+  return {
+    type: '@plan/EDIT_REQUEST',
+    payload: {
+      ...data,
+    },
+  };
+}

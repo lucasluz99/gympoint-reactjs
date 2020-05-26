@@ -69,6 +69,31 @@ function* activatePlan({ payload }) {
     return toast.error('Ocorreu algum erro,tente novamente mais tarde');
   }
 }
+
+function* editPlan({ payload }) {
+  const { price, duration, title } = payload;
+
+  try {
+    const plan = yield call(api.put, `/plans/${payload.id}`, {
+      price,
+      duration,
+      title,
+    });
+
+    const { data } = yield call(api.get, '/plans');
+
+    toast.success('Plano editado com sucesso');
+    return yield put(updatePlansSuccess(data));
+  } catch (err) {
+    if (err.response.data.error === 'This title is already being used') {
+      return toast.error('Já existe um plano com este nome');
+    }
+    return toast.error(
+      'Não foi possível editar este plano verifique os dados ou tente novamente mais tarde'
+    );
+  }
+}
+
 export default all([
   takeLatest('@plan/LOAD_REQUEST', loadPlans),
   takeLatest('@plan/UPDATE_PAGE_REQUEST', updatePage),
@@ -76,4 +101,5 @@ export default all([
   takeLatest('@plan/NEW_REQUEST', newPlan),
   takeLatest('@plan/SHOW_CANCELEDS_REQUEST', showCanceled),
   takeLatest('@plan/ACTIVATE_REQUEST', activatePlan),
+  takeLatest('@plan/EDIT_REQUEST', editPlan),
 ]);
