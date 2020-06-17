@@ -25,9 +25,11 @@ import Th from '../../components/Table/Th';
 import Tbody from '../../components/Table/Tbody';
 import Td from '../../components/Table/Td';
 import Pagination from '../../components/Pagination';
+import Spinner from '../../components/Spinner';
 
 function Students() {
   const student = useSelector((state) => state.student.student);
+  const loading = useSelector((state) => state.student.loading);
   const students = useSelector((state) => state.student.students);
   const totalPages = useSelector((state) => state.student.totalPages);
   const dispatch = useDispatch();
@@ -63,41 +65,48 @@ function Students() {
         <InputIcon handleChange={handleChange} value={student} />
       </HeaderPage>
       <Panel>
-        <Table>
-          <Thead>
-            <tr>
-              <Th>Nome</Th>
-              <Th>Email</Th>
-              <Th align="center">Idade</Th>
-              <Th />
-            </tr>
-          </Thead>
-          <Tbody>
-            {students.map((student) => (
-              <tr key={student.id}>
-                <Td width={40}>{student.name}</Td>
-                <Td>{student.email}</Td>
-                <Td align="center">{student.age}</Td>
-                <Td align="center">
-                  <DeleteButton
-                    type="button"
-                    onClick={() => handleDelete(student)}
-                  >
-                    Apagar
-                  </DeleteButton>
+        {loading ? (
+          <Spinner color="#444" size={50} />
+        ) : (
+          <>
+            <Table>
+              <Thead>
+                <tr>
+                  <Th>Nome</Th>
+                  <Th>Email</Th>
+                  <Th align="center">Idade</Th>
+                  <Th />
+                </tr>
+              </Thead>
+              <Tbody>
+                {students.map((student) => (
+                  <tr key={student.id}>
+                    <Td width={40}>{student.name}</Td>
+                    <Td>{student.email}</Td>
+                    <Td align="center">{student.age}</Td>
+                    <Td align="center">
+                      <DeleteButton
+                        type="button"
+                        onClick={() => handleDelete(student)}
+                      >
+                        Apagar
+                      </DeleteButton>
 
-                  <Link
-                    style={{ color: '#4D85EE' }}
-                    to={`/students/edit/${student.id}`}
-                  >
-                    Editar
-                  </Link>
-                </Td>
-              </tr>
-            ))}
-          </Tbody>
-        </Table>
+                      <Link
+                        style={{ color: '#4D85EE' }}
+                        to={`/students/edit/${student.id}`}
+                      >
+                        Editar
+                      </Link>
+                    </Td>
+                  </tr>
+                ))}
+              </Tbody>
+            </Table>
+          </>
+        )}
       </Panel>
+
       {totalPages !== 0 && (
         <Pagination module="student" update={updatePageRequest} />
       )}
