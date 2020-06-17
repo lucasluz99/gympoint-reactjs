@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { formatPrice } from '../../../util/format';
 
 const INITIAL_STATE = {
   plans: [],
@@ -7,7 +8,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-export default function registrationReducer(state = INITIAL_STATE, action) {
+export default function studentReducer(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case '@plan/LOAD_REQUEST': {
@@ -17,7 +18,10 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       case '@plan/UPDATE_SUCCESS': {
         const { data, currentPage, totalPages } = action.payload;
         draft.loading = false;
-        draft.registrations = data;
+        draft.plans = data.map((plan) => ({
+          ...plan,
+          priceFormatted: formatPrice(plan.price),
+        }));
         draft.currentPage = Number(currentPage);
         draft.totalPages = Number(totalPages);
         break;
