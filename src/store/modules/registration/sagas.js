@@ -1,35 +1,13 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 
 import { updateRegistrationsSuccess, updatePageSuccess } from './actions';
 import api from '../../../services/api';
-import history from '~/services/history';
 
 function* loadRegistrations() {
   const { data } = yield call(api.get, '/registrations');
 
-  const formatted = data.data.map((registration) => ({
-    ...registration,
-
-    startDateFormatted: format(
-      parseISO(registration.start_date),
-      "dd 'de' MMMM 'de' yyyy",
-      {
-        locale: pt,
-      }
-    ),
-    endDateFormatted: format(
-      parseISO(registration.end_date),
-      "dd 'de' MMMM 'de' yyyy",
-      {
-        locale: pt,
-      }
-    ),
-  }));
-
-  return yield put(updateRegistrationsSuccess(formatted));
+  return yield put(updateRegistrationsSuccess(data));
 }
 
 /* function* updatePage({ payload }) {

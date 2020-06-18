@@ -27,7 +27,7 @@ function Registrations() {
   const registrations = useSelector(
     (state) => state.registration.registrations
   );
-  console.log(registrations);
+
   const totalPages = useSelector((state) => state.registration.totalPages);
   const dispatch = useDispatch();
 
