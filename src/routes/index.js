@@ -33,7 +33,7 @@ export default function Routes() {
       <Route path="/plans/new" component={PlansNew} isPrivate />
       <Route path="/plans/edit/:id" component={PlansEdit} isPrivate />
 
-      <Route path="/registrations" component={Registrations} isPrivate />
+      <Route path="/registrations" exact component={Registrations} isPrivate />
       <Route path="/registrations/new" component={RegistrationsNew} isPrivate />
       <Route
         path="/registrations/edit/:id"
