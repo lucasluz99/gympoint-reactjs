@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
@@ -24,7 +25,7 @@ function PlansNew() {
     duration: Yup.number('Digite uma idade válida').required(
       'Idade é obrigatória'
     ),
-    price: Yup.number('Digite um peso válido').required('Peso é obrigatório'),
+    price: Yup.number('Digite um preço').required('Preço é obrigatório'),
   });
 
   const formik = useFormik({
@@ -87,7 +88,6 @@ function PlansNew() {
             <div>
               <Label htmlFor="price">Preço Mensal</Label>
               <Input
-                type="number"
                 name="price"
                 id="price"
                 min={0}
